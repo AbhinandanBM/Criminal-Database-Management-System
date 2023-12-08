@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Police Profile
+{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+
+        <div class="col-md-3"></div>
+            
+        <div class="col-md-6">
+
+            <h4 class="text-center bg-primary text-white">Police Registration</h4>
+<br>
+{% with  messages=get_flashed_messages(with_categories=true)  %}
+{% if messages %}
+{% for category,message in messages  %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show"
+role="alert">
+     {{message}}
+  
+  <button type="button" class="close" data-dismiss="alert"
+  aria-Label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+            <form action="/police" method="post" class="jumbotron">
+
+                <div class="form-group">
+              
+                    <input type="number" class="form-control" id="pol_id"  name="police_id"  placeholder="Id "required>
+                  
+                  </div>
+
+ 
+
+                <div class="form-group">
+              
+                  <input type="email" class="form-control" id="email" value={{current_user.email}} name="email" required>
+                
+                </div>
+
+                
+              
+                <div class="form-group">
+                
+                  <input type="text" class="form-control" id="pol_name" name="name" placeholder="Full Name" required>
+                
+                </div>
+              
+               <div class="form-group">
+              
+                          
+                                                    
+              <select class="form-control" id="gender" name="gender"  required>
+                      <option selected>Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Others">Others</option>
+               
+                    </select>
+               </div>
+              
+                
+                <div class="form-group">
+                  
+                  <input type="date" class="form-control" name="pol_dob" placeholder="Date Of Birth" required>
+                
+                </div>
+
+                <div class="form-group">
+              
+                  <input type="text" class="form-control" id="designation" name="desg" placeholder="Designation" required>
+                
+                </div>
+            
+              
+                <div class="form-group">
+              
+                  <input type="number" class="form-control" id="pol_phno" name="number" placeholder="Phone Number" required>
+                
+                </div>
+
+                <div class="form-group">
+              
+                    <input type="text" class="form-control" id="pol_addr" name="addr" placeholder="Address" required>
+                  
+                  </div>
+              
+                
+                <button type="submit" class="btn btn-warning btn-sm btn-block">Register</button>
+              </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3"></div>
+
+</div>
+{% endblock body %}
+

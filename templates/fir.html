@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}
+FIR Record
+{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+
+        <div class="col-md-5">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="static/imgs/fir.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">FIR</h5>
+                  <p class="card-text">FIR Record</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">An FIR can be filed in the police station of the concerned area in whose jurisdiction the offence has occurred. A first are to obtain information about the alleged criminal activity so as to be able to take suitable steps for tracing and bringing to book the guilty person.</li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link">Contact Us</a>
+                  <a href="#" class="card-link">About Us</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-5">
+
+            <h4 class="text-center bg-primary text-white">FIR Record</h4>
+<br>
+{% with  messages=get_flashed_messages(with_categories=true)  %}
+{% if messages %}
+{% for category,message in messages  %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show"
+role="alert">
+     {{message}}
+  
+  <button type="button" class="close" data-dismiss="alert"
+  aria-Label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+            <form action="/fir" method="post" class="jumbotron">
+
+                <div class="form-group">
+              
+                    <input type="number" class="form-control" id="fir_id"  name="fid"  placeholder="Id "required>
+                  
+                  </div>
+
+                
+              
+                <div class="form-group">
+                
+                  <input type="date" class="form-control" id="fir_date" name="fdate" placeholder="FIR Date" required>
+                
+                </div>
+            
+            
+              
+                <div class="form-group">
+              
+                  <input type="number" class="form-control" id="stat_id" name="sid" placeholder="Station Id" required>
+                
+                </div>
+
+
+                <div class="form-group">
+              
+                    <input type="text" class="form-control" id="vict_name" name="vname" placeholder="Victim Name" required>
+                  
+                </div>
+
+                <div class="form-group">
+                  <label for="FIR description">FIR Description</label>
+                  <input type="text" class="form-control" id="fir_desc" name="fdesc" required>
+              </div>
+
+              
+
+
+                
+                <button type="submit" class="btn btn-warning btn-sm btn-block">Submit</button>
+              </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock body %}
+

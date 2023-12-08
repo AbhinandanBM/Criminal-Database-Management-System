@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+FIR Details     
+{% endblock title %}
+
+{% block body %}
+
+{% with  messages=get_flashed_messages(with_categories=true)  %}
+{% if messages %}
+{% for category,message in messages  %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show"
+role="alert">
+     {{message}}
+  
+  <button type="button" class="close" data-dismiss="alert"
+  aria-Label="Close">
+    <span aria-hidden="true">&times;</span>
+
+</button>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<div class="container mt-4">
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">FIR ID</th>
+        <th scope="col">FIR DATE</th>
+        <th scope="col">STATION ID</th>
+        <th scope="col">VICTIM NAME</th>
+        <th scope="col">FIR DESCRIPTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in query  %}
+      <tr>
+        <th scope="row">{{post.fir_id}}</th>
+        <td>{{post.fir_date}}</td>
+        <td>{{post.stat_id}}</td>
+        <td>{{post.vict_name}}</td>
+        <td>{{post.fir_desc}}</td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+</div>
+
+
+      
+{% endblock body %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Criminal Details     
+{% endblock title %}
+
+{% block body %}
+
+{% with  messages=get_flashed_messages(with_categories=true)  %}
+{% if messages %}
+{% for category,message in messages  %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show"
+role="alert">
+     {{message}}
+  
+  <button type="button" class="close" data-dismiss="alert"
+  aria-Label="Close">
+    <span aria-hidden="true">&times;</span>
+
+</button>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">CID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">GENDER</th>
+        <th scope="col">CRIME DATE</th>
+        <th scope="col">CRIME TYPE</th>
+        <th scope="col">PHONE NO</th>
+        <th scope="col">ADDRESS</th>
+        <th scope="col">FID</th>
+        <th scope="col">EDIT</th>
+        <th scope="col">DELETE</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in query  %}
+      <tr>
+        <th scope="row">{{post.crmnl_id}}</th>
+        <td>{{post.crmnl_name}}</td>
+        <td>{{post.crmnl_gender}}</td>
+        <td>{{post.crm_date}}</td>
+        <td>{{post.crm_type}}</td>
+        <td>{{post.crmnl_phno}}</td>
+        <td>{{post.crmnl_addr}}</td>
+        <td>{{post.fir_id}}</td>
+        <td><a href="/edit/{{post.crmnl_id}}"><button class="btn btn-primary">Edit</button></a></td>
+        <td><a href="/delete/{{post.crmnl_id}}"><button onclick="return confirm('Are you sure to Delete data');" class="btn btn-danger">Delete</button></a></td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+
+
+      
+{% endblock body %}

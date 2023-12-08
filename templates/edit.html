@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Criminal Details    
+{% endblock title %}
+
+{% block body %}
+
+<div class="row">
+<div class="col-md-4">
+</div>
+
+<div class="col-md-4">
+<br>
+        <h4 class="text-center bg-danger text-white">Update Criminal Record</h4>
+
+    <form action="/edit/<string:crmnl_id>" method="post" class="jumbotron">
+
+        <div class="form-group">
+      
+            <input type="number" class="form-control" id="crmnl_id"   name="cid" value={{posts.crmnl_id}}  placeholder="Id "required>
+          
+          </div>
+
+        
+      
+        <div class="form-group">
+        
+          <input type="text" class="form-control" id="Crmnl_name"   name="name" value={{posts.crmnl_name}}   placeholder="Criminal Name" required>
+        
+        </div>
+      
+       <div class="form-group">
+      
+        <div class="form-group">
+                                      
+          <select class="form-control" id="gender" name="gender" required>
+                  <option selected>{{posts.crmnl_gender}}</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Others">Others</option>
+           
+                </select>
+           </div>
+    
+    
+      
+        <div class="form-group">
+      
+          <input type="date" class="form-control" id="crm_date" name="date" value={{posts.crm_date}}  placeholder="Date of Crime" required>
+        
+        </div>
+
+       
+            
+
+        <div class="form-group">
+      
+            <input type="text" class="form-control" id="crm_type"  name="ctype" value={{posts.crm_type}}  placeholder="Crime Type" required>
+          
+        </div>
+
+        <div class="form-group">
+      
+          <input type="number" class="form-control" id="crmnl_phno"  name="number" value={{posts.crmnl_phno}}   placeholder="Phone Number" required>
+        
+        </div>
+
+        <div class="form-group">
+      
+            <input type="text" class="form-control" id="crmnl_addr"  name="addr" value={{posts.crmnl_addr}}  placeholder="Criminal address" required>
+          
+        </div>
+
+        <div class="form-group">
+      
+            <input type="number" class="form-control" id="fir_id" name="fid" value={{posts.fir_id}}  placeholder="FIR Id" required>
+          
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-sm btn-block">Update</button>
+      </form>
+</div>
+
+<div class="col-md-4">
+</div>
+
+</div>
+    
+
+{% endblock body %}

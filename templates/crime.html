@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Criminal Record
+{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-3">
+    <div class="row">
+
+        <div class="col-md-5">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="static/imgs/crime.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Crime</h5>
+                  <p class="card-text">Forms Of Crime</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Cybercrime</li>
+                  <li class="list-group-item">Fraud</li>
+                  <li class="list-group-item">Theft</li>
+                  <li class="list-group-item">...etc</li>
+                </ul>
+                <div class="card-body">
+                  <a href="#" class="card-link">Contact Us</a>
+                  <a href="#" class="card-link">About Us</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-5">
+
+            <h4 class="text-center bg-primary text-white">Criminal Record</h4>
+<br>
+{% with  messages=get_flashed_messages(with_categories=true)  %}
+{% if messages %}
+{% for category,message in messages  %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show"
+role="alert">
+     {{message}}
+  
+  <button type="button" class="close" data-dismiss="alert"
+  aria-Label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+            <form action="/crime" method="post" class="jumbotron">
+
+                <div class="form-group">
+              
+                    <input type="number" class="form-control" id="crmnl_id"  name="cid"  placeholder="Id "required>
+                  
+                  </div>
+
+                
+              
+                <div class="form-group">
+                
+                  <input type="text" class="form-control" id="Crmnl_name" name="name" placeholder="Criminal Name" required>
+                
+                </div>
+              
+               <div class="form-group">
+              
+                <div class="form-group">
+                                              
+                  <select class="form-control" id="gender" name="gender"  required>
+                          <option selected>Gender</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Others">Others</option>
+                   
+                        </select>
+                   </div>
+            
+            
+              
+                <div class="form-group">
+              
+                  <input type="date" class="form-control" id="crm_date" name="date" placeholder="Date of Crime" required>
+                
+                </div>
+
+               
+                    
+
+                <div class="form-group">
+              
+                    <input type="text" class="form-control" id="crm_type" name="ctype" placeholder="Crime Type" required>
+                  
+                </div>
+
+                <div class="form-group">
+              
+                  <input type="number" class="form-control" id="crmnl_phno" name="number" placeholder="Phone Number" required>
+                
+                </div>
+
+                <div class="form-group">
+              
+                    <input type="text" class="form-control" id="crmnl_addr" name="addr" placeholder="Criminal address" required>
+                  
+                </div>
+
+                <div class="form-group">
+              
+                    <input type="number" class="form-control" id="fir_id" name="fid" placeholder="FIR Id" required>
+                  
+                </div>
+
+                <button type="submit" class="btn btn-warning btn-sm btn-block">Save</button>
+              </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock body %}
+
