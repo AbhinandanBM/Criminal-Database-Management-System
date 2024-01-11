@@ -270,4 +270,4 @@ def search():
         flash("Criminal is Not Available","danger")
     return render_template('index.html')
 
-app.run(debug=True)
+app.run(debug=False,host='0.0.0.0')
